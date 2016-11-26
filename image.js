@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ActivityIndicator, NetInfo } from 'react-native';
+import { View, Image, ActivityIndicator, NetInfo } from 'react-native';
 import RNFS, { DocumentDirectoryPath } from 'react-native-fs';
 import ResponsiveImage from 'react-native-responsive-image';
 
@@ -180,6 +180,7 @@ class CacheableImage extends React.Component {
     };
   
     render() {        
+        const { children, defaultSource, ...props } = this.props;
         if (!this.state.isRemote) {
             return this.renderLocal();
         }
@@ -193,7 +194,9 @@ class CacheableImage extends React.Component {
         }
 
         return (
-            <ActivityIndicator {...this.props.activityIndicatorProps} />
+            <View {...props}>
+                {/* <ActivityIndicator {...this.props.activityIndicatorProps} />*/}
+            </View>
         );
     }
 
